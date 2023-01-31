@@ -13,9 +13,14 @@ mongoose.set("strictQuery", false);
 
 // Connecting to MongoDB Atlas
 const connectToMongo = () => {
-  mongoose.connect(process.env.MONGO_URL).then(() => {
-    console.log("Connected to mongodb successfully");
-  });
+  mongoose
+    .connect(process.env.MONGO_URL)
+    .then(() => {
+      console.log("Connected to mongodb successfully");
+    })
+    .catch(() => {
+      console.log("Error: Connecting to mongodb failed");
+    });
 };
 
 export default connectToMongo;
