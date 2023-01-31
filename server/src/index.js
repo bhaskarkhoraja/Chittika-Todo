@@ -4,6 +4,7 @@ import path from "path";
 import { config } from "dotenv";
 import { fileURLToPath } from "url";
 import connectToMongo from "./database.js";
+import router from "./Routes/todoRoutes.js";
 
 // using "url" to get __filename and __dirname as ES6 module is used for this project
 const __filename = fileURLToPath(import.meta.url);
@@ -19,6 +20,8 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+// Available routes
+app.use("/api", router);
 
 // Connecting to MongoDB Atlas
 connectToMongo();
