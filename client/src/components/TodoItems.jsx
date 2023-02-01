@@ -6,14 +6,18 @@ const TodoItems = (props) => {
   const { id, index, title, des, priority, complete } = props;
 
   const context = useContext(initialTodo);
-  const { deleteTodo, toggleTodo } = context;
+  const { deleteTodo, toggleTodo, toggleModal } = context;
 
   const handleDelete = async (id) => {
     await deleteTodo(id);
   };
 
-  const handleToggle = async (index) => {
+  const handleToggleComplete = async (index) => {
     await toggleTodo(index);
+  };
+
+  const handleToggleModal = async (index) => {
+    await toggleModal(index);
   };
 
   return (
@@ -29,11 +33,16 @@ const TodoItems = (props) => {
       <div className="btns">
         <button
           className="done"
-          onClick={() => handleToggle(index)}
+          onClick={() => handleToggleComplete(index)}
         >
           {complete === true ? "Undo" : "Done"}
         </button>
-        <button className="update">Update</button>
+        <button
+          className="update"
+          onClick={() => handleToggleModal(index)}
+        >
+          Update
+        </button>
         <button
           className="delete"
           onClick={() => handleDelete(id)}
