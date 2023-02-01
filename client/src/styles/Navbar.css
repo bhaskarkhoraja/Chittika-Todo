@@ -6,7 +6,10 @@ nav{
   align-items: center;
 
   background-color: #0081C9;
-  border-radius: 16px;
+  border-radius: 10px;
   color: ghostwhite;
   font-size: 25px;
+  position: sticky;
+  top: 0px;
+  z-index: 3;
 }

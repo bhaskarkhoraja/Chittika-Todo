@@ -10,10 +10,12 @@ const TodoItems = (props) => {
 
   const handleDelete = async (id) => {
     await deleteTodo(id);
+    props.showAlert("Deleted Successfully", "success");
   };
 
   const handleToggleComplete = async (index) => {
     await toggleTodo(index);
+    props.showAlert("Changed Todo Status", "success")
   };
 
   const handleToggleModal = async (index) => {

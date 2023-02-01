@@ -3,7 +3,7 @@ import initialTodo from "../context/TodoContext";
 import "../styles/Todo.css";
 import TodoItems from "./TodoItems";
 
-const Todo = () => {
+const Todo = (props) => {
   const context = useContext(initialTodo);
   const { todo, addTodo } = context;
 
@@ -43,6 +43,7 @@ const Todo = () => {
       newPriority: "",
     });
     setShowAdd(true);
+    props.showAlert("Successfully added Todo", "success");
   };
 
   return (
@@ -64,6 +65,7 @@ const Todo = () => {
                   des={item.Description}
                   priority={item.Priority}
                   complete={item.Completed}
+                  showAlert={props.showAlert}
                 />
               );
             }

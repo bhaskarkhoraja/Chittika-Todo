@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import initialTodo from "../context/TodoContext";
 import "../styles/Modal.css";
 
-const Modal = () => {
+const Modal = (props) => {
   const context = useContext(initialTodo);
   const { toggleModal, modalData, setModalData, updateTodo } = context;
 
@@ -13,6 +13,7 @@ const Modal = () => {
   const handleUpdate = async () => {
     await updateTodo();
     await toggleModal();
+    props.showAlert("Update Successfully", "success");
   };
 
   return (

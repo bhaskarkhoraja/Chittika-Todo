@@ -3,7 +3,7 @@ import initialTodo from "../context/TodoContext";
 import "../styles/Todo.css";
 import TodoItems from "./TodoItems";
 
-const Completed = () => {
+const Completed = (props) => {
   const context = useContext(initialTodo);
   const { todo } = context;
   return (
@@ -21,6 +21,7 @@ const Completed = () => {
                   des={item.Description}
                   priority={item.Priority}
                   complete={item.Completed}
+                  showAlert={props.showAlert}
                 />
               );
             }
