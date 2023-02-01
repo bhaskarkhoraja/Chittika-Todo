@@ -11,9 +11,23 @@ const Modal = (props) => {
   };
 
   const handleUpdate = async () => {
-    await updateTodo();
-    await toggleModal();
-    props.showAlert("Update Successfully", "success");
+    if (modalData.Title.length < 5) {
+      props.showAlert("Title is too short", "wrong");
+    } else if (modalData.Title.length > 20) {
+      props.showAlert("Title is too long", "wrong");
+    } else if (modalData.Description.length < 5) {
+      props.showAlert("Description is too short", "wrong");
+    } else if (modalData.Description.length > 140) {
+      props.showAlert("Description is too long", "wrong");
+    } else if (modalData.Priority.length < 3) {
+      props.showAlert("Priority is too short", "wrong");
+    } else if (modalData.Priority.length > 10) {
+      props.showAlert("Priority is too long", "wrong");
+    } else {
+      await updateTodo();
+      await toggleModal();
+      props.showAlert("Update Successfully", "success");
+    }
   };
 
   return (
@@ -28,7 +42,7 @@ const Modal = (props) => {
             <input
               placeholder="Your Title"
               className="no-outline"
-              maxLength="25"
+              maxLength="20"
               minLength="5"
               value={modalData.Title}
               name="Title"

@@ -32,18 +32,32 @@ const Todo = (props) => {
   };
 
   const handleClick = async () => {
-    await addTodo(
-      newTodo.newTitle,
-      newTodo.newDescription,
-      newTodo.newPriority
-    );
-    setNewTodo({
-      newTitle: "",
-      newDescription: "",
-      newPriority: "",
-    });
-    setShowAdd(true);
-    props.showAlert("Successfully added Todo", "success");
+    if (newTodo.newTitle.length < 5) {
+      props.showAlert("Title is too short", "wrong");
+    } else if (newTodo.newTitle.length > 20) {
+      props.showAlert("Title is too long", "wrong");
+    } else if (newTodo.newDescription.length < 5) {
+      props.showAlert("Description is too short", "wrong");
+    } else if (newTodo.newDescription.length > 140) {
+      props.showAlert("Description is too long", "wrong");
+    } else if (newTodo.newPriority.length < 3) {
+      props.showAlert("Priority is too short", "wrong");
+    } else if (newTodo.newPriority.length > 10) {
+      props.showAlert("Priority is too long", "wrong");
+    } else {
+      await addTodo(
+        newTodo.newTitle,
+        newTodo.newDescription,
+        newTodo.newPriority
+      );
+      setNewTodo({
+        newTitle: "",
+        newDescription: "",
+        newPriority: "",
+      });
+      setShowAdd(true);
+      props.showAlert("Successfully added Todo", "success");
+    }
   };
 
   return (
