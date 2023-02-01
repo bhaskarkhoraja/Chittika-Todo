@@ -6,7 +6,8 @@
   "scripts": {
     "client": "cd client && npm run dev",
     "server": "cd server && npm run start",
-    "start": " concurrently \"npm run client\" \"npm run server\""
+    "postinstall": "(cd client && npm install); (cd server && npm install)",
+    "start": "concurrently \"npm run client\" \"npm run server\""
   },
   "keywords": [],
   "author": "Bhaskar",
