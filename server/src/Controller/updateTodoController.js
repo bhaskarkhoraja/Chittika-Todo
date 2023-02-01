@@ -18,7 +18,6 @@ export async function updateTodoController(req, res) {
   try {
     result = await TodoModel.findById(id);
   } catch (error) {
-    console.log(error);
     res.status(500).send({ success, error: "Internal error occured" });
   }
 
