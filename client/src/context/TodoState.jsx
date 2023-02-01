@@ -8,6 +8,8 @@ import { updateTodoItems } from "../api/UpdateTodoItems";
 
 const TodoState = (props) => {
   const [todo, setTodo] = useState([]);
+  const [modal, setModal] = useState(false);
+  const [modalData, setModalData] = useState([]);
 
   // Fetch todo from api
   const fetchTodo = async () => {
@@ -20,6 +22,8 @@ const TodoState = (props) => {
     const response = await addTodoItems(title, description, priority);
     const newTodo = { ...todo };
     newTodo.result.push(response.currentTodo);
+    newTodo.count = newTodo.count + 1;
+    setTodo(newTodo);
   };
 
   // Delete todo item
@@ -48,9 +52,37 @@ const TodoState = (props) => {
     updateTodoItems(newTodo.result[index]);
   };
 
+  const updateTodo = async () => {
+    const newTodo = { ...todo };
+    newTodo.result.map((data, index) => {
+      if (data._id === modalData._id) {
+        newTodo.result[index] = modalData;
+      }
+    });
+    updateTodoItems(modalData);
+  };
+
+  // Modal
+  const toggleModal = (index) => {
+    const newTodo = { ...todo };
+    setModalData(newTodo.result[index]);
+    setModal(!modal);
+  };
+
   return (
     <TodoContext.Provider
-      value={{ todo, fetchTodo, addTodo, deleteTodo, toggleTodo }}
+      value={{
+        todo,
+        fetchTodo,
+        addTodo,
+        deleteTodo,
+        toggleTodo,
+        modal,
+        toggleModal,
+        modalData,
+        setModalData,
+        updateTodo,
+      }}
     >
       {props.children}
     </TodoContext.Provider>
