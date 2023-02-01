@@ -1,0 +1,95 @@
+.todoItem {
+  height: 320px;
+  width: 320px;
+  border: 5px solid #0081c9;
+  border-radius: 17px;
+  padding: 20px;
+  margin: 20px;
+  position: relative;
+}
+
+.title {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  border-bottom: 3px solid #0081c9;
+}
+
+.des {
+  height: 55%;
+  padding: 10px 5px 5px 5px;
+  font-weight: 600;
+}
+
+.priority {
+  padding: 5px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.priority > p {
+  font-weight: 500;
+  width: 65%;
+}
+
+.btns {
+  height: 20%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.done,
+.update,
+.delete {
+  border-radius: 10px;
+  width: 80px;
+  height: 40px;
+  font-size: 15px;
+  cursor: pointer;
+  border: 0px;
+  color: ghostwhite;
+  font-weight: 700;
+}
+
+.done {
+  background-color: #28a745;
+}
+
+.update {
+  background-color: #17a2b8;
+}
+
+.delete {
+  background-color: #dc3545;
+}
+
+.addItem {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  border-radius: 17px;
+  z-index: -1;
+}
+
+.addItem > button {
+  width: 100%;
+  height: 100%;
+  border-radius: 17px;
+  font-size: 100px;
+  font-weight: 500;
+  border: 0px;
+  background-color: white;
+  cursor: pointer;
+  color: #0081c9;
+}
+
+.show {
+  z-index: 2;
+}
